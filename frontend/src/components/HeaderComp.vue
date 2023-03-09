@@ -23,7 +23,6 @@ export default {
   name: 'HeaderComp',
   data() {
     return {
-      someKey: localStorage.getItem('auth'),
     }
   },
   props: {

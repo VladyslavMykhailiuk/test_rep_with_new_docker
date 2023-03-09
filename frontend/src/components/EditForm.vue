@@ -72,7 +72,7 @@
     </div>
     <br>
     <div class="form-group row">
-      <label for="date" class="col-md-2 col-form-label">Дата публикации</label>
+      <label for="date" class="col-md-2 col-form-label">Дата редактирования</label>
       <div class="col-md-10">
         <input
             type="date"
@@ -179,7 +179,6 @@ export default {
           "id":id,
         }
       }).then( (response) => {
-            console.log(response);
             this.validate(response);
           });
     },

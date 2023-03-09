@@ -33,11 +33,7 @@ export default {
       axiosInstance.get('/posts.php')
           .then(response => {
             this.posts = response.data;
-            // console.log(response.data);
           })
-          .catch(error => {
-            console.log(error);
-          });
     },
     logout() {
             axiosInstance.get('/logout.php')

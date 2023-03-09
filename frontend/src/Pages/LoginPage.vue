@@ -47,12 +47,10 @@ export default {
       let valForm = this.toFormData(this.forValidation);
       axiosInstance.post('/loginValidate.php',valForm)
           .then( (response) => {
-            console.log('resp',response);
             this.validate(response);
             axiosInstance.get('/checkAuth.php')
                 .then(response => {
                   this.isAuthenticated = response.data;
-                  console.log(this.isAuthenticated)
                   localStorage.setItem('auth',this.isAuthenticated)
                   if(localStorage.getItem('auth') !== ''){
                     router.push('/form');

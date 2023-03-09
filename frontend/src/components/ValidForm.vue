@@ -137,7 +137,6 @@
 </template>
 
 <script>
-// import axios from "axios";
 import axiosInstance from "@/assets/AxiosInstance";
 import router from "@/router/router";
 export default {
@@ -175,7 +174,6 @@ export default {
 let valForm = this.toFormData(this.forValidation);
  axiosInstance.post('/validate.php',valForm)
     .then( (response) => {
-      // console.log(response);
       this.validate(response);
     });
     },

@@ -1,5 +1,4 @@
 <?php
-//header("Content-Type: application/json; charset=UTF-8");
 require 'cors.php';
 require 'Database.php';
 $obj = new Database();

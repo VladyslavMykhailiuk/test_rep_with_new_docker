@@ -63,7 +63,6 @@ deletePost(){
       }
     }).then((response) => {
       this.post = response.data;
-      // console.log(response.data)
     });
   }
 }

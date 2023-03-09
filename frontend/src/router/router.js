@@ -6,7 +6,6 @@ import RegisterPage from "@/Pages/RegisterPage.vue";
 import PostsListPage from "@/Pages/PostsListPage.vue";
 import OnePost from "@/components/OnePost.vue";
 import EditPostPage from "@/Pages/EditPostPage.vue";
-// import OnePost from "@/components/OnePost.vue";
 const routes = [
     {
         path: "/",
