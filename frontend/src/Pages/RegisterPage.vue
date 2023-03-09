@@ -59,7 +59,6 @@ export default {
   name: 'RegisterPage',
   data() {
     return {
-      isAuthenticated: false,
       forValidation: {
         email:'',
         login:'',
@@ -94,7 +93,6 @@ export default {
               this.validate(response);
               axiosInstance.get('/checkAuth.php')
                   .then(response => {
-                    this.isAuthenticated = response.data;
                     localStorage.setItem('auth',response.data)
                     if(localStorage.getItem('auth') !== ''){
                       router.push('/form');
