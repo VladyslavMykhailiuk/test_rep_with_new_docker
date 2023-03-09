@@ -3,7 +3,7 @@
     <h1>Увійдіть на сайт</h1>
     <form>
       <div class="mb-3">
-        <label for="login" class="form-label">Логін</label>
+        <label for="login" class="form-label">email</label>
         <input type="email" class="form-control" name="email" id="login" aria-describedby="emailHelp" v-model="forValidation.email" ref="email">
         <div v-if="errorCheckedEmail" class="text-danger">{{errorCheckedEmail}}</div>
       </div>
@@ -53,13 +53,12 @@ console.log(this.isAuthenticated)
           .then( (response) => {
             console.log('resp',response);
             this.validate(response);
-            axiosInstance.get('/checkAuth.php')
-                .then(response => {
-                  this.isAuthenticated = response.data.authenticated;
-                  console.log(this.isAuthenticated)
-                });
           });
-
+      axiosInstance.get('/checkAuth.php')
+          .then(response => {
+            this.isAuthenticated = response.data.authenticated;
+            console.log(this.isAuthenticated)
+          });
     },
     validate($resp) {
       this.errorCheckedEmail = '';

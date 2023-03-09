@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 require 'cors.php';
 require 'Database.php';
 $obj = new Database();
@@ -32,3 +32,4 @@ if($_SERVER['REQUEST_METHOD']== 'POST'){
 //header("Content-type: application/json");
 echo json_encode($out);
 //die();
+//session_write_close();

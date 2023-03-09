@@ -20,8 +20,8 @@
      <strong>Показник категорії</strong>
      <div>{{post.category_id}}</div>
    </div>
-    <button @click="editPost" class="nav-link px-2 text-black">Редагувати пост</button>
-    <button @click="deletePost" class="nav-link px-2 text-black">Видалити пост</button>
+    <button @click="editPost">Редагувати пост</button>
+    <button @click="deletePost">Видалити пост</button>
   </div>
 </template>
 
@@ -63,7 +63,7 @@ deletePost(){
       }
     }).then((response) => {
       this.post = response.data;
-      console.log(response.data)
+      // console.log(response.data)
     });
   }
 }
@@ -72,7 +72,26 @@ deletePost(){
 
 <style scoped>
 .main {
-  width: 800px;
+  max-width: 95%;
+  overflow: hidden;
+  word-break: break-word;
+}
+
+button {
+  padding: 15px;
+  margin-top: 30px;
+  margin-left: 20px;
+  border-radius: 15px;
+  width: 150px;
+  background-color: aquamarine;
+  font-size: 15px;
+  transition: all 0.3s ease-in-out;
+  border: none;
+}
+
+button:hover {
+  color: #fff;
+  background-color: #000;
 }
 
 </style>

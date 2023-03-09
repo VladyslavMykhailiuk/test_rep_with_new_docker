@@ -91,7 +91,7 @@ export default {
         let valForm = this.toFormData(this.forValidation);
         axiosInstance.post('/registerValidate.php',valForm)
             .then( (response) => {
-              console.log(response);
+              // console.log(response);
               this.validate(response);
             });
       },

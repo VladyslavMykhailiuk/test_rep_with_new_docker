@@ -134,7 +134,6 @@
       </div>
     </div>
   </form>
-<!--      {{$route.params.id}}-->
 </template>
 
 <script>
