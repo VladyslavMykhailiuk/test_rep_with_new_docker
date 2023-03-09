@@ -55,8 +55,7 @@ if($_SERVER['REQUEST_METHOD']== 'POST'){
         }
         else {
             $out['success'] = true;
-            $obj->execute("INSERT INTO users (email,login,city,sex_id,phone,password) VALUES ('$email','$login','$city',$sex,'$phone','$password')");
-//            $_SESSION['authenticated'] = true;
+            $obj->execute("INSERT INTO users (email,login,city,sex_id,phone,password,is_auth) VALUES ('$email','$login','$city',$sex,'$phone','$password',1)");
         }
     }
 }

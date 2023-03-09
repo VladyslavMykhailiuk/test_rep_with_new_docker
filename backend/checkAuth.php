@@ -1,11 +1,9 @@
 <?php
-session_save_path('/work/backend/sessions');
-session_start();
 require 'cors.php';
-if (isset($_SESSION['authenticated']) && $_SESSION['authenticated']) {
+require 'Database.php';
+$obj = new Database();
+$user = $obj->query("SELECT * FROM users WHERE is_auth = 1");
 
-    echo json_encode(['authenticated' => true]);
-} else {
-    echo json_encode(['authenticated' => false]);
+if($user) {
+    echo '1240436346340';
 }
-session_write_close();

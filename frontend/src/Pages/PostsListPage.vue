@@ -6,11 +6,13 @@
         <router-link class="link" :to="{ name: 'post', params: { id: post.id } }">{{ post.title }}</router-link>
       </li>
     </ul>
+    <button @click="logout">logout</button>
   </div>
 </template>
 
 <script>
 import axiosInstance from "@/assets/AxiosInstance";
+import router from "@/router/router";
 
 export default {
   name: 'MainPage',
@@ -37,6 +39,13 @@ export default {
             console.log(error);
           });
     },
+    logout() {
+            axiosInstance.get('/logout.php')
+                .then(()=> {
+                  localStorage.removeItem('auth');
+                  router.push('/');
+                });
+    }
   },
 }
 </script>
@@ -67,6 +76,22 @@ h2 {
   max-width: 100%;
   overflow: hidden;
   word-break: break-word;
+}
+button {
+  padding: 15px;
+  margin-top: 30px;
+  margin-left: 20px;
+  border-radius: 15px;
+  width: 150px;
+  background-color: aquamarine;
+  font-size: 15px;
+  transition: all 0.3s ease-in-out;
+  border: none;
+}
+
+button:hover {
+  color: #fff;
+  background-color: #000;
 }
 
 </style>

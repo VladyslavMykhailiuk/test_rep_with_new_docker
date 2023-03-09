@@ -93,6 +93,16 @@ export default {
             .then( (response) => {
               // console.log(response);
               this.validate(response);
+              axiosInstance.get('/checkAuth.php')
+                  .then(response => {
+                    this.isAuthenticated = response.data;
+                    console.log(this.isAuthenticated)
+                    localStorage.setItem('auth',response.data)
+                    if(localStorage.getItem('auth') !== ''){
+                      router.push('/form');
+                    }
+                  });
+
             });
       },
       validate($resp) {
@@ -134,9 +144,6 @@ export default {
         }
         if($resp.data.checkedLogin) {
           this.errorCheckedLogin = $resp.data.message;
-        }
-        if($resp.data.success) {
-          router.push('/form');
         }
       },
       toFormData(obj) {

@@ -40,11 +40,7 @@ export default {
 
   },
   mounted() {
-    axiosInstance.get('/checkAuth.php')
-        .then(response => {
-          this.isAuthenticated = response.data.authenticated;
-console.log(this.isAuthenticated)
-        });
+
   },
   methods:{
     validateInput() {
@@ -53,11 +49,15 @@ console.log(this.isAuthenticated)
           .then( (response) => {
             console.log('resp',response);
             this.validate(response);
-          });
-      axiosInstance.get('/checkAuth.php')
-          .then(response => {
-            this.isAuthenticated = response.data.authenticated;
-            console.log(this.isAuthenticated)
+            axiosInstance.get('/checkAuth.php')
+                .then(response => {
+                  this.isAuthenticated = response.data;
+                  console.log(this.isAuthenticated)
+                  localStorage.setItem('auth',this.isAuthenticated)
+                  if(localStorage.getItem('auth') !== ''){
+                    router.push('/form');
+                  }
+                });
           });
     },
     validate($resp) {
@@ -69,9 +69,6 @@ console.log(this.isAuthenticated)
       }
       if($resp.data.checkedPassword) {
         this.errorCheckedPassword = $resp.data.message;
-      }
-      if($resp.data.success) {
-        router.push('/form');
       }
     },
     toFormData(obj) {

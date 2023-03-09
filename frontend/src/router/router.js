@@ -22,11 +22,17 @@ const routes = [
     },
     {
         path: "/form",
-        component: PostFormPage
+        component: PostFormPage,
+        meta: {
+            requiresAuth: true,
+        }
     },
     {
         path: "/posts",
-        component: PostsListPage
+        component: PostsListPage,
+        meta: {
+            requiresAuth: true,
+        }
     },
     {
         path: '/post/:id',
@@ -48,9 +54,15 @@ const router = createRouter({
 
 
 
-// router.beforeEach(async (to, from, next) => {
-//
-// })
+router.beforeEach(async (to, from, next) => {
+    const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+    // const store = useAuthStore();
+    if (requiresAuth && !localStorage.getItem('auth')) {
+        next('/login');
+    } else {
+        next();
+    }
+})
 
 
 export default router;

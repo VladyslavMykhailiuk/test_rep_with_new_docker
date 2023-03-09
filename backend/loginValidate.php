@@ -1,5 +1,4 @@
 <?php
-//session_start();
 require 'cors.php';
 require 'Database.php';
 $obj = new Database();
@@ -23,13 +22,12 @@ if($_SERVER['REQUEST_METHOD']== 'POST'){
        }
        else {
            $out['success'] = true;
-           $_SESSION['authenticated'] = true;
+           $obj->query("UPDATE users SET is_auth = 1 WHERE email = '$email'");
        }
        }
    }
 }
-//var_dump($_SESSION['authenticated']);
+
 //header("Content-type: application/json");
 echo json_encode($out);
 //die();
-//session_write_close();
